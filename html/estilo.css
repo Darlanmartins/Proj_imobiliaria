@@ -1,0 +1,21 @@
+.centro
+{
+    text-align: center;
+    font-family: sans-serif;
+    color: cadetblue;
+}
+
+table
+{
+    border:solid 3px;
+    margin-top: 25px;
+    font-family: sans-serif;
+    color: black;
+   
+}
+td
+{
+    padding:15px;
+    
+}
+
