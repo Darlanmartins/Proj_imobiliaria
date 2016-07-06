@@ -1,0 +1,248 @@
+
+CREATE DATABASE imobiliaria;
+
+
+
+-- ============= Ordem de criação - 1ª TABELA ==============
+
+Data/Alt: 01/07/2016
+
+
+-- Table: corretor --
+
+DROP TABLE corretor;
+
+CREATE TABLE corretor
+(
+  creci character varying(8) NOT NULL,
+  nome character varying(80),
+  telefone character varying(13),
+  CONSTRAINT corretor_pkey PRIMARY KEY (creci)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE corretor
+  OWNER TO postgres;
+
+
+-- Ordem = 1º INSERT CORRETOR --
+
+INSERT INTO corretor VALUES('128.223', 'Antônio Carlos da Silva Souza', '53 9978.0101');
+INSERT INTO corretor VALUES('129.458', 'Breno Mores Pereira', '53 9945.2356');
+INSERT INTO corretor VALUES('132.067', 'Carlos Mario Fonseca Assis', '53 8112.3472');
+INSERT INTO corretor VALUES('135.824', 'Daniel da Luz Gonçalves', '53 9102.3020');
+INSERT INTO corretor VALUES('139.644', 'Nara Regina Marques Saldanha', '53 9975.2231');
+
+
+
+-- ============= Ordem de criação - 3ª TABELA ==============
+
+Data/Alt: 01/07/2016
+
+
+-- Table: imovel -- 
+
+DROP TABLE imovel;
+
+CREATE TABLE imovel
+(
+  matricula character varying(10) NOT NULL,
+  categoria character varying(12),
+  tipo character varying(20),
+  endereco character varying(80),
+  bairro character varying(40),
+  cidade character varying(25),
+  caracteristicas character varying(100),
+  proprietario character varying(15),
+  CONSTRAINT imovel_pkey PRIMARY KEY (matricula),
+  CONSTRAINT proprietario_fkey FOREIGN KEY (proprietario)
+  REFERENCES proprietario (cpf) MATCH SIMPLE
+  ON UPDATE NO ACTION ON DELETE NO ACTION
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE imovel
+  OWNER TO postgres;
+
+
+-- Ordem = 3º INSERT IMOVEL --
+
+INSERT INTO imovel VALUES('534.521','Residencial','Apartamento','Rua Ary Silveira Azambuja, 550 - Bloco 1 - Apto. 103','São Bernardo','Bagé','Apartamento 2 Dormitórios - 1 Box/Garagem', '925.481.322-73' );
+INSERT INTO imovel VALUES('341.267','Residencial','Apartamento','Rua Ary Silveira Azambuja, 550 - Bloco 1 - Apto. 203','São Bernardo','Bagé','Apartamento 2 Dormitórios - 1 Box/Garagem', '925.481.322-73' );
+INSERT INTO imovel VALUES('357.869','Residencial','Apartamento','Rua Ary Silveira Azambuja, 550 - Bloco 4 - Apto. 104','São Bernardo','Bagé','Apartamento 2 Dormitórios - 1 Box/Garagem', '925.481.322-73' );
+INSERT INTO imovel VALUES('379.738','Residencial','Apartamento','Rua Ary Silveira Azambuja, 550 - Bloco 4 - Apto. 204','São Bernardo','Bagé','Apartamento 2 Dormitórios - 1 Box/Garagem', '925.481.322-73' );
+INSERT INTO imovel VALUES('289.234','Residencial','Apartamento','Avenida. General Osório, 1325 - Apto. 102','Centro','Bagé','Apartamento 2 Dormitórios - 1 Suíte - 1 Banheiro Social - 1 Box/Garagem','102.120.201-00');
+INSERT INTO imovel VALUES('423.523','Residencial','Casa','Rua Maurity, 184','Centro','Bagé','Casa 3 Dormitórios - 2 Banheiros - Garagem 1 Carro','698.543.806-21');
+INSERT INTO imovel VALUES('184.975','Comercial','Sala Comercial','Avenida Marechal Floriano, 1248 - Sala 02','Centro','Bagé','Sala com 45m² - 1 Banheiro','883.012.183-85');
+INSERT INTO imovel VALUES('478.884','Comercial','Galpão Comercial','Rua José do Patrocínio, 1284','São Judas Tadeu','Bagé','Galpão com 125M² - 2 Banheiros - Estacionamento para 4 Carros','111.504.033-11');
+
+
+
+-- ============= Ordem de criação - 4ª TABELA ==============
+
+Data/Alt: 01/07/2016
+
+
+-- Table: inquilino --
+
+ DROP TABLE inquilino;
+
+CREATE TABLE inquilino
+(
+  cpf character varying(15) NOT NULL,
+  nome character varying(70),
+  email character varying(40),
+  sexo character varying(12),
+  telefone character varying(14),
+  endereco character varying(80),
+  cidade character varying(30),
+  bairro character varying(40),
+  estado character varying(2),
+  CONSTRAINT inquilino_pkey PRIMARY KEY (cpf)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE inquilino
+  OWNER TO postgres;
+
+
+-- Ordem = 4º INSERT INQUILINO --
+
+INSERT INTO inquilino VALUES('387.476.988-31','Aldo Barcelos Farias','aldobf@hotmail.com','Masculino','53 8118.0203','Rua N.Srª Aparecida, 2344','Bagé','Estrela','RS');
+INSERT INTO inquilino VALUES('747.236.331-09','Claudio Amaro Weber Saraiva','clweber@hotmail.com','Masculino','53 3241.1894','Rua Assis Brasil, 235','Bagé','São Jorge','RS');
+INSERT INTO inquilino VALUES('874.983.021-88','Julio Cesar Cimirro','jcimirro@gmail.com','Masculino','53 9956.1564','Rua dos Ferroviários, 1285','Bagé','Passo das Pedras','RS');
+INSERT INTO inquilino VALUES('346.958.831-03','Ana Betina Gonçalves Neves','abneves@brturbo.com','Feminino','53 9967.4392','Rua General Osório, 1986','Bagé','Centro','RS');
+INSERT INTO inquilino VALUES('698.543.806-21','Catia Cristina Bueno Silva','catiabueno@gmail.com','Feminino','53 3240.6543','Rua Marcílio Dias, 2385','Bagé','Centro','RS');
+INSERT INTO inquilino VALUES('714.263.701-72','João Saldanha Carvalho','jcarvalho@gmail.com','Masculino','53 9090.5624','Rua Arideu Monteiro, 3485','Bagé','Vila Brum','RS');
+INSERT INTO inquilino VALUES('400.048.321-93','Anaurelino Bueno da Silva','abueno@gmail.com','Masculino','53 8114.3299','Rua Ari da Silva Dias, 965','Bagé','Vila Gaúcha','RS');
+INSERT INTO inquilino VALUES('101.001.200-85','Camila Martins Paixão','camipx@hotmail.com','Feminino','53 3247.0223','Rua Fernando Machado, 815','Bagé','Centro','RS');
+
+
+
+-- ============= Ordem de criação - 5ª TABELA ==============
+
+Data/Alt: 01/07/2016
+
+
+-- Table: locacoes --
+
+DROP TABLE locacoes;
+
+CREATE TABLE locacoes
+(
+  contrato character varying(8) NOT NULL,
+  data character varying(12),
+  vigencia character varying(14),
+  valor character varying(8),
+  imovel character varying(10),
+  inquilino character varying(15),
+  CONSTRAINT locacoes_pkey PRIMARY KEY (contrato),
+  CONSTRAINT imovel_fkey FOREIGN KEY (imovel)
+  REFERENCES imovel (matricula) MATCH SIMPLE
+  ON UPDATE NO ACTION ON DELETE NO ACTION,
+  CONSTRAINT inquilino_fkey FOREIGN KEY (inquilino)
+  REFERENCES inquilino (cpf) MATCH SIMPLE
+  ON UPDATE NO ACTION ON DELETE NO ACTION
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE locacoes
+  OWNER TO postgres;
+
+
+-- Ordem = 5º INSERT LOCACOES --
+
+INSERT INTO locacoes VALUES('201.601', '26/06/2016','12 Meses','950,00','534.521','387.476.988-31');
+INSERT INTO locacoes VALUES('201.602', '27/06/2016','18 Meses','950,00','341.267','747.236.331-09');
+INSERT INTO locacoes VALUES('201.603', '27/06/2016','18 Meses','980,00','357.869','874.983.021-88');
+INSERT INTO locacoes VALUES('201.604', '28/06/2016','24 Meses','980,00','379.738','346.958.831-03');
+INSERT INTO locacoes VALUES('201.605', '29/06/2016','30 Meses','4.850,00','478.884','714.263.701-72');
+INSERT INTO locacoes VALUES('201.606', '30/06/2016','24 Meses','1.800,00','184.975','101.001.200-85');
+
+
+
+
+-- ============= Ordem de criação - 2ª TABELA ==============
+
+Data/Alt: 01/07/2016
+
+
+-- Table: proprietario -- 
+
+DROP TABLE proprietario;
+
+CREATE TABLE proprietario
+(
+  cpf character varying(15) NOT NULL,
+  nome character varying(70),
+  email character varying(40),
+  sexo character varying(12),
+  telefone character varying(14),
+  endereco character varying(80),
+  cidade character varying(30),
+  bairro character varying(40),
+  estado character varying(2),
+  CONSTRAINT proprietario_pkey PRIMARY KEY (cpf)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE proprietario
+  OWNER TO postgres;
+
+
+-- Ordem = 2º INSERT PROPRIETARIO --
+
+INSERT INTO proprietario VALUES('014.874.768-31','Almir Saldanha da Costa','almirsc@hotmail.com','Masculino','53 9966.5445','Rua Barão do Amazonas, 344','Bagé','Centro','RS');
+INSERT INTO proprietario VALUES('731.509.887-50','Claudia Alencar da Silva','clasilva@gmail.com','Feminino','53 3241.8452','Rua General Osório, 854 Apto. 23','Bagé','Centro','RS');
+INSERT INTO proprietario VALUES('883.012.183-85','Francisco Carlos Porcelis Dourado','fcdourado@gmail.com','Masculino','53 3242.6871','Rua Zero Hora, 348','Bagé','Jardim do Castelo','RS');
+INSERT INTO proprietario VALUES('495.831.205-83','Ana Margarida Figueira Brum','ambrum@brturbo.com.br','Feminino','53 9673.4639','Rua Rodrigues Lima, 186','Bagé','Centro','RS');
+INSERT INTO proprietario VALUES('698.543.806-21','Catarina Silveira da Silveira','catsilveira@gmail.com','Feminino','53 3240.5438','Rua Gomes Carneiro, 2121 Apto. 210','Bagé','Centro','RS');
+INSERT INTO proprietario VALUES('811.812.842-08','Flavio Vinhas Pereira','fvper@hotmail.com','Masculino','53 3240.8722','Rua Angelica Jardim, 458','Bagé','Vila Hípica','RS');
+INSERT INTO proprietario VALUES('952.132.010-03','Eulalio Mattias Segredo','eulalioms@brturbo.com','Masculino','53 9109.6555','Rua Riachuelo, 1846','Bagé','Centro','RS');
+INSERT INTO proprietario VALUES('111.504.033-11','Claudio Siqueira Morais','clmorais@alternet.com.br','Masculino','53 3247.0454','Avenida General Osório, 2010','Bagé','Centro','RS');
+INSERT INTO proprietario VALUES('102.120.201-00','Julhetinha de Jesus Silveira Farias','julhefarias@gmail.com','Feminino','53 8116.2117','Rua Narciso Sune, 138','Bagé','Hidráulica','RS');
+INSERT INTO proprietario VALUES('925.481.322-73','Ana Claudia Pons Martins','acpons@brturbo.com.br','Feminino','53 9999.0909','Avenida Sete de Setembro, 1120 Apto. 310','Bagé','Centro','RS');
+INSERT INTO proprietario VALUES('800.500.123-52','Carlos Augusto Pires Silva','casilva@gmail.com','Masculino','53 3241.1538','Gomes Carneiro, 1802','Bagé','Centro','RS');
+
+
+
+
+-- ============= Ordem de criação - 6ª TABELA ==============
+
+Data/Alt: 05/07/2016
+
+
+
+- Table: login -- 
+
+DROP TABLE login;
+
+CREATE TABLE login
+(
+  usuario character varying(30) NOT NULL,
+  senha character varying(20) NOT NULL,
+  CONSTRAINT usuario_pkey PRIMARY KEY (usuario)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE corretor
+  OWNER TO postgres;
+
+INSERT INTO login VALUES ('antoniocarlos','admin');
+INSERT INTO login VALUES ('breno','admin');
+INSERT INTO login VALUES ('carlosmario','admin');
+INSERT INTO login VALUES ('daniel','admin');
+INSERT INTO login VALUES ('nararegina','admin')
+
+
+-- Ordem = 6º INSERT LOGIN --
+
+
+-- ===========================================================
+
