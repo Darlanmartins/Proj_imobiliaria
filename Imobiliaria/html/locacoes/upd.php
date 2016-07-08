@@ -56,16 +56,22 @@ function formatar(mascara, documento){
             </tr>
             <tr>
                 <td>Vigência: </td>
-                <td><select id="vigencia" name="txtVigencia">
-                <option>Selecione...</option>
-                <option value="12 Meses">12 Meses</option>
-                <option value="18 Meses">18 Meses</option>
-                <option value="24 Meses">24 Meses</option>
-                <option value="30 Meses">30 Meses</option>
-                <option value="36 Meses">36 Meses</option>
+                <td>
+                <?php
+                     function selected( $value, $selected ){
+                     return $value==$selected ? ' selected="selected"' : '';
+                     }
+                ?>
+                <select name="txtVigencia">
+                <option value="">Selecione...</option>    
+                <option value="12 Meses"<?php echo selected( '12 Meses', $obj->vigencia ); ?> >12 Meses</option>
+                <option value="18 Meses"<?php echo selected( '18 Meses', $obj->vigencia ); ?> >18 Meses</option>
+                <option value="24 Meses"<?php echo selected( '24 Meses', $obj->vigencia ); ?> >24 Meses</option>
+                <option value="30 Meses"<?php echo selected( '30 Meses', $obj->vigencia ); ?> >30 Meses</option>
+                <option value="36 Meses"<?php echo selected( '36 Meses', $obj->vigencia ); ?> >36 Meses</option>
                 </select>
                 <span class="style1"></span></td>
-            </tr>
+            </tr>                              
             <tr>
                 <td>Valor: </td>
                 <td><input id="valor" name="txtValor" type="text" size="14" maxlength="14" value="<?php echo $obj->valor?>" />
@@ -88,7 +94,7 @@ function formatar(mascara, documento){
                                         <?php echo $item->endereco?>
                          </option>
                         <?php
-                         }
+                          }
                         ?>
                     </select></td> <br />
             </tr>

@@ -3,8 +3,8 @@
         header("location:index.php");
     }
   
-    require_once "../../modelo/Locacoes.class.php";
-    require_once "../../dao/LocacoesDAO.class.php";
+    require_once "../../modelo/Usuario.class.php";
+    require_once "../../dao/UsuarioDAO.class.php";
 
     $obj = new Locacoes();
     $obj->contrato = $_POST["txtContrato"];

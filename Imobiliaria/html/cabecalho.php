@@ -1,7 +1,7 @@
 <?php
-?>
+?>    
 <!DOCTYPE html>
-<html> 
+
     <head>
         <meta charset="UTF-8">
         <title>Gerenciamento - Aluguéis -</title>
@@ -9,7 +9,8 @@
     </head>
     <body >
         <h1 class="centro_t1">Gerenciamento de Imóveis | Aluguéis </h1>
-        <header class="centro"><div class="centro_t2" value="<?php echo $obj->usuario ?>" readonly name="txtUsuario"> - <a href="http://localhost/Imobiliaria/html/Usuario/usuario.php"><button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Sair do Sistema">Log out</button></a> ...
+
+            <header class="centro"><div class="centro_t2" readonly name="txtUsuario"> <?php echo $obj->nome ?> - <a href="http://localhost/Imobiliaria/html/Usuario/usuario.php"><button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Sair do Sistema">Log out</button></a> ...
             </div><hr/>
             <nav><a href="../corretor"><button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Lista de Corretores">Corretor</button></a>
                  <a href="../imovel"><button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Lista de Imóveis">Imóvel</button></a>

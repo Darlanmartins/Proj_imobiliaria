@@ -45,24 +45,32 @@ function formatar(mascara, documento){
                 <span class="style3">Apenas números</span></td>
             </tr>    
             <tr>
-            <td>Categoria: </td>
-                <td><select id="categoria" name="txtCategoria" >
-                <option>Selecione...</option>
-                <option value="Residencial">Residencial</option>
-                <option value="Comercial">Comercial</option>
+                <td>Categoria: </td>
+                <td>
+                <?php
+                    function selected( $value, $selected ){
+                    return $value==$selected ? ' selected="selected"' : '';
+                    }
+                ?>
+                <select name="txtCategoria">
+                <option value="">Selecione...</option>    
+                <option value="Residencial"<?php echo selected( 'Residencial', $obj->categoria ); ?> >Residencial</option>
+                <option value="Comercial"<?php echo selected( 'Comercial', $obj->categoria ); ?> >Comercial</option>
+                <option value="Mixto"<?php echo selected( 'Mixto', $obj->categoria ); ?> >Mixto</option>
                 </select>
                 <span class="style1"></span></td>
-            </tr>    
+            </tr>
             <tr>
-            <td>Tipo: </td>
-                <td><select id="tipo" name="txtTipo" >
-                <option>Selecione...</option>
-                <option value="Apartamento">Apartamento</option>
-                <option value="Box/Garagem">Box/Garagem</option>
-                <option value="Casa">Casa</option>
-                <option value="Galpão Comercial">Galpão Comercial</option>
-                <option value="Sala Comercial">Sala Comercial</option>
-                <option value="Terreno">Terreno</option>
+                <td>Tipo: </td>
+                <td>
+                <select name="txtTipo">
+                <option value="">Selecione...</option>    
+                <option value="Apartamento"<?php echo selected( 'Apartamento', $obj->tipo ); ?> >Apartamento</option>
+                <option value="Box/Garagem"<?php echo selected( 'Box/Garagem', $obj->tipo ); ?> >Box/Garagem</option>
+                <option value="Casa"<?php echo selected( 'Casa', $obj->tipo ); ?> >Casa</option>
+                <option value="Galpão Comercial"<?php echo selected( 'Galpão Comercial', $obj->tipo ); ?> >Galpão Comercial</option>
+                <option value="Sala Comercial"<?php echo selected( 'Sala Comercial', $obj->tipo ); ?> >Sala Comercial</option>
+                <option value="Terreno"<?php echo selected( 'Terreno', $obj->tipo ); ?> >Terreno</option>
                 </select>
                 <span class="style1"></span></td>
             </tr>   

@@ -36,6 +36,7 @@ function formatar(mascara, documento){
         <option>Selecione...</option>
         <option value="Residencial">Residencial</option>
         <option value="Comercial">Comercial</option>
+        <option value="Mixto">Mixto</option>
           </select>
         <span class="style1"></span></td>
     </tr>
